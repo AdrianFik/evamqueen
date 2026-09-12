@@ -1,4 +1,4 @@
-﻿# Logs
+# Logs
 logs
 *.log
 npm-debug.log*
@@ -26,3 +26,5 @@ scratch_*.json
 deploy_*.json
 *.pdf
 seccion_trilogia_ref.jpg
+mobile_audit*
+.vercel

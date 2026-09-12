@@ -3,7 +3,7 @@ import { X, ChevronLeft, ChevronRight, BookOpen, ZoomIn, ZoomOut, Bookmark } fro
 import { chaptersData } from '../data/chaptersData';
 
 export default function ChapterReaderModal({ bookId, onClose }) {
-  const [fontSize, setFontSize] = useState(19);
+  const [fontSize, setFontSize] = useState(() => (typeof window !== 'undefined' && window.innerWidth < 640 ? 16 : 19));
   const chapter = chaptersData[bookId];
 
   // Default to Chapter 1 start page if available
@@ -60,53 +60,53 @@ export default function ChapterReaderModal({ bookId, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-carbon/80 backdrop-blur-md p-3 sm:p-6 animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-carbon/80 backdrop-blur-md p-2 sm:p-6 animate-fade-in"
       onClick={onClose}
     >
       {/* Reader Container */}
       <div 
-        className="relative w-full max-w-4xl h-[85vh] min-h-[580px] max-h-[780px] flex flex-col rounded-3xl bg-[#FAF6EF] text-[#1C1B1A] border border-piedra/60 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-4xl h-[92vh] sm:h-[85vh] max-h-[820px] flex flex-col rounded-2xl sm:rounded-3xl bg-[#FAF6EF] text-[#1C1B1A] border border-piedra/60 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Architectural Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-piedra/40 bg-cal/60">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-corten/10 text-corten">
-              <BookOpen className="w-5 h-5" />
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-piedra/40 bg-cal/60">
+          <div className="flex items-center gap-2.5 sm:gap-3 overflow-hidden">
+            <div className="p-1.5 sm:p-2 rounded-xl bg-corten/10 text-corten shrink-0">
+              <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div>
-              <h3 className="font-serif text-lg md:text-xl font-medium tracking-wide text-carbon">
+            <div className="min-w-0">
+              <h3 className="font-serif text-base sm:text-lg md:text-xl font-medium tracking-wide text-carbon truncate">
                 {chapter.title}
               </h3>
-              <p className="text-xs font-sans text-grafito/70 uppercase tracking-wider">
+              <p className="text-[11px] sm:text-xs font-sans text-grafito/70 uppercase tracking-wider truncate">
                 {chapter.subtitle}
               </p>
             </div>
           </div>
 
-          {/* Controls: Font size, Download PDF & Close */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="hidden sm:flex items-center border border-piedra/60 rounded-xl p-1 bg-blancoLuz/80 shadow-sm">
+          {/* Controls: Font size & Close */}
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            <div className="flex items-center border border-piedra/60 rounded-xl p-0.5 sm:p-1 bg-blancoLuz/80 shadow-sm">
               <button
-                onClick={() => setFontSize(s => Math.max(16, s - 2))}
+                onClick={() => setFontSize(s => Math.max(14, s - 2))}
                 className="p-1 text-grafito/70 hover:text-corten transition-colors"
                 title="Reducir fuente"
               >
-                <ZoomOut className="w-4 h-4" />
+                <ZoomOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
-              <span className="text-xs px-2 font-mono text-grafito/60">{fontSize}px</span>
+              <span className="text-[11px] sm:text-xs px-1 sm:px-2 font-mono text-grafito/60">{fontSize}px</span>
               <button
                 onClick={() => setFontSize(s => Math.min(26, s + 2))}
                 className="p-1 text-grafito/70 hover:text-corten transition-colors"
                 title="Aumentar fuente"
               >
-                <ZoomIn className="w-4 h-4" />
+                <ZoomIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-xl text-grafito/60 hover:text-carbon hover:bg-piedra/30 transition-colors"
+              className="p-1.5 sm:p-2 rounded-xl text-grafito/60 hover:text-carbon hover:bg-piedra/30 transition-colors"
               aria-label="Cerrar visor"
             >
               <X className="w-5 h-5" />
@@ -137,20 +137,20 @@ export default function ChapterReaderModal({ bookId, onClose }) {
         </div>
 
         {/* Reading Body */}
-        <div className="flex-1 overflow-y-auto px-6 sm:px-12 md:px-20 py-8 space-y-6">
+        <div className="flex-1 overflow-y-auto px-4 sm:px-12 md:px-20 py-5 sm:py-8 space-y-4 sm:space-y-6">
           <div className="max-w-2xl mx-auto">
             {/* Page indicator */}
-            <div className="text-center mb-6">
-              <span className="text-xs uppercase tracking-widest text-corten font-sans font-medium">
+            <div className="text-center mb-4 sm:mb-6">
+              <span className="text-[11px] sm:text-xs uppercase tracking-widest text-corten font-sans font-medium">
                 Página {currentPage + 1} de {chapter.pages.length}
               </span>
-              <div className="w-12 h-0.5 bg-corten/30 mx-auto mt-2" />
+              <div className="w-12 h-0.5 bg-corten/30 mx-auto mt-1.5 sm:mt-2" />
             </div>
 
             {/* Current Page Content */}
             <div 
               className="font-serif text-carbon/90 whitespace-pre-line select-text"
-              style={{ fontSize: `${fontSize}px`, lineHeight: 1.8 }}
+              style={{ fontSize: `${fontSize}px`, lineHeight: 1.75 }}
             >
               {formatPageContent(chapter.pages[currentPage]) || (
                 <div className="text-center italic text-grafito/50 py-12">
@@ -162,36 +162,38 @@ export default function ChapterReaderModal({ bookId, onClose }) {
         </div>
 
         {/* Bottom Navigation Toolbar */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-piedra/40 bg-cal/60">
+        <div className="flex items-center justify-between px-3 sm:px-6 py-2.5 sm:py-4 border-t border-piedra/40 bg-cal/60 gap-2">
           <button
             onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
             disabled={currentPage === 0}
-            className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-sans font-medium transition-all ${
+            className={`inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-sans font-medium transition-all ${
               currentPage === 0
                 ? 'text-grafito/30 cursor-not-allowed'
                 : 'text-carbon bg-blancoLuz border border-piedra hover:border-corten hover:text-corten shadow-sm'
             }`}
           >
-            <ChevronLeft className="w-4 h-4" />
-            Página anterior
+            <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="hidden xs:inline sm:inline">Página anterior</span>
+            <span className="xs:hidden sm:hidden">Anterior</span>
           </button>
 
           {/* Quick Page Indicator */}
-          <span className="font-mono text-xs text-grafito/60 hidden sm:inline">
+          <span className="font-mono text-xs text-grafito/60">
             {currentPage + 1} / {chapter.pages.length}
           </span>
 
           <button
             onClick={() => setCurrentPage(p => Math.min(chapter.pages.length - 1, p + 1))}
             disabled={currentPage === chapter.pages.length - 1}
-            className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-sans font-medium transition-all ${
+            className={`inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-sans font-medium transition-all ${
               currentPage === chapter.pages.length - 1
                 ? 'text-grafito/30 cursor-not-allowed'
                 : 'text-carbon bg-blancoLuz border border-piedra hover:border-corten hover:text-corten shadow-sm'
             }`}
           >
-            Siguiente página
-            <ChevronRight className="w-4 h-4" />
+            <span className="hidden xs:inline sm:inline">Siguiente página</span>
+            <span className="xs:hidden sm:hidden">Siguiente</span>
+            <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
         </div>
       </div>

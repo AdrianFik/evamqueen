@@ -4,7 +4,7 @@ import { InstagramIcon } from './Icons';
 
 export default function AuthorSection() {
   return (
-    <section id="autora" className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="autora" className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden lg:overflow-visible">
       {/* Subtle Background Accent */}
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-terracota/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -13,7 +13,7 @@ export default function AuthorSection() {
         <div className="lg:col-span-5 relative">
           <div className="relative mx-auto max-w-md lg:max-w-none">
             {/* Background warm architectural offset shadow */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-corten/20 via-cal to-piedra/30 rounded-3xl transform -rotate-1" />
+            <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-tr from-corten/20 via-cal to-piedra/30 rounded-3xl transform -rotate-1 pointer-events-none" />
             
             {/* Image Container */}
             <div className="relative rounded-2xl overflow-hidden border border-piedra/60 shadow-architectural bg-cal">

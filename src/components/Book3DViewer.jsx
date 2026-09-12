@@ -281,7 +281,8 @@ export default function Book3DViewer({ currentBook, onOpenChapter }) {
       {/* 3D Canvas Container */}
       <div
         ref={containerRef}
-        className="w-full h-[460px] md:h-[540px] cursor-grab active:cursor-grabbing relative overflow-hidden rounded-2xl bg-gradient-to-b from-cal/40 to-piedra/20 border border-piedra/40 shadow-inner"
+        style={{ touchAction: 'pan-y' }}
+        className="w-full h-[400px] sm:h-[460px] md:h-[540px] cursor-grab active:cursor-grabbing relative overflow-hidden rounded-2xl bg-gradient-to-b from-cal/40 to-piedra/20 border border-piedra/40 shadow-inner"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -323,10 +324,10 @@ export default function Book3DViewer({ currentBook, onOpenChapter }) {
 
         {/* Quick Read Preview Prompt at bottom of canvas */}
         {currentBook.hasChapter && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 w-auto px-4 text-center">
             <button
               onClick={onOpenChapter}
-              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-carbon text-blancoLuz text-xs md:text-sm font-sans tracking-wide hover:bg-corten transition-all duration-300 shadow-architectural hover:scale-105"
+              className="group inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-carbon text-blancoLuz text-xs sm:text-sm font-sans tracking-wide hover:bg-corten transition-all duration-300 shadow-architectural hover:scale-105 whitespace-nowrap"
             >
               <BookOpen className="w-4 h-4 text-corten group-hover:text-blancoLuz transition-colors" />
               <span>Abrir y leer el capítulo 1</span>
@@ -336,11 +337,11 @@ export default function Book3DViewer({ currentBook, onOpenChapter }) {
       </div>
 
       {/* Perspective Quick-Angle Controls */}
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs font-sans">
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-sans">
         <span className="text-grafito/60 mr-1 hidden sm:inline">Perspectiva:</span>
         <button
           onClick={() => setPerspective('portada')}
-          className={`px-3 py-1.5 rounded-lg border transition-all ${
+          className={`px-2.5 sm:px-3 py-1.5 rounded-lg border transition-all ${
             activePerspective === 'portada'
               ? 'bg-carbon text-blancoLuz border-carbon shadow-sm'
               : 'bg-blancoLuz/80 text-grafito border-piedra hover:border-corten hover:text-corten'
@@ -350,7 +351,7 @@ export default function Book3DViewer({ currentBook, onOpenChapter }) {
         </button>
         <button
           onClick={() => setPerspective('lomo')}
-          className={`px-3 py-1.5 rounded-lg border transition-all ${
+          className={`px-2.5 sm:px-3 py-1.5 rounded-lg border transition-all ${
             activePerspective === 'lomo'
               ? 'bg-carbon text-blancoLuz border-carbon shadow-sm'
               : 'bg-blancoLuz/80 text-grafito border-piedra hover:border-corten hover:text-corten'
@@ -360,7 +361,7 @@ export default function Book3DViewer({ currentBook, onOpenChapter }) {
         </button>
         <button
           onClick={() => setPerspective('contraportada')}
-          className={`px-3 py-1.5 rounded-lg border transition-all ${
+          className={`px-2.5 sm:px-3 py-1.5 rounded-lg border transition-all ${
             activePerspective === 'contraportada'
               ? 'bg-carbon text-blancoLuz border-carbon shadow-sm'
               : 'bg-blancoLuz/80 text-grafito border-piedra hover:border-corten hover:text-corten'
@@ -370,7 +371,7 @@ export default function Book3DViewer({ currentBook, onOpenChapter }) {
         </button>
         <button
           onClick={() => setPerspective('perspectiva')}
-          className={`px-3 py-1.5 rounded-lg border transition-all ${
+          className={`px-2.5 sm:px-3 py-1.5 rounded-lg border transition-all ${
             activePerspective === 'perspectiva'
               ? 'bg-carbon text-blancoLuz border-carbon shadow-sm'
               : 'bg-blancoLuz/80 text-grafito border-piedra hover:border-corten hover:text-corten'

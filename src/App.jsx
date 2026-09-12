@@ -12,7 +12,7 @@ export default function App() {
   const [activeChapterBookId, setActiveChapterBookId] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#FAF6EF] text-[#1C1B1A] relative selection:bg-corten/20 selection:text-corten">
+    <div className="min-h-screen bg-[#FAF6EF] text-[#1C1B1A] relative selection:bg-corten/20 selection:text-corten overflow-x-hidden">
       {/* Floating Architectural Header */}
       <Navbar onOpenFirstChapter={() => setActiveChapterBookId('book1')} />
 
