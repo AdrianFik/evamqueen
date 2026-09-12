@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evam Queen · Tierra · Metal · Sangre · Trilogía</title>
+    <meta name="description" content="Web oficial de la escritora y arquitecta Evam Queen (Eva Reina). Descubre la trilogía 'Tierra · Metal · Sangre': Casas de una vida, Rutas de fuego y viento y Arquitectos del destino." />
+    <meta name="author" content="Evam Queen (Eva Reina)" />
+    <meta name="theme-color" content="#FAF6EF" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Evam Queen" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Evam Queen · Trilogía Tierra · Metal · Sangre" />
+    <meta property="og:description" content="«Escribo como aprendí a proyectar: anticipando lo invisible, la estructura que sostiene a aquello que sí se ve.» Explora los libros de la saga con modelos 3D y lectura in-situ." />
+    <meta property="og:image" content="/assets/og_banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Evam Queen · Trilogía Tierra · Metal · Sangre" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Evam Queen · Trilogía Tierra · Metal · Sangre" />
+    <meta name="twitter:description" content="«Escribo como aprendí a proyectar: anticipando lo invisible, la estructura que sostiene a aquello que sí se ve.» Novelas sobre arquitectura, heridas y destino." />
+    <meta name="twitter:image" content="/assets/og_banner.jpg" />
+
+    <!-- Structured Data: Schema.org (Books & Author) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "#author",
+          "name": "Evam Queen",
+          "alternateName": "Eva Reina",
+          "jobTitle": ["Arquitecta", "Escritora"],
+          "description": "Arquitecta y escritora de la trilogía Tierra · Metal · Sangre.",
+          "image": "/assets/Foto%20autora.jpg",
+          "sameAs": [
+            "https://evamqueen.substack.com/",
+            "https://www.instagram.com/casasdeunavida/",
+            "https://www.instagram.com/evareinag/"
+          ]
+        },
+        {
+          "@type": "Book",
+          "name": "Casas de una vida",
+          "author": { "@id": "#author" },
+          "inLanguage": "es",
+          "genre": ["Ficción arquitectónica", "Novela de aprendizaje"],
+          "description": "Una novela inspiradora sobre arquitectura y misión de vida.",
+          "image": "/assets/book1_front.png",
+          "url": "https://amzn.eu/d/01jcieyq"
+        },
+        {
+          "@type": "Book",
+          "name": "Rutas de fuego y viento",
+          "author": { "@id": "#author" },
+          "inLanguage": "es",
+          "genre": ["Ficción arquitectónica", "Novela contemporánea"],
+          "description": "La arquitectura de las heridas. Segunda entrega de la trilogía Tierra · Metal · Sangre.",
+          "image": "/assets/book2_front.png",
+          "url": "https://amzn.eu/d/0dp9z97D"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Google Fonts: Cormorant Garamond & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-blancoLuz text-carbon selection:bg-corten/20 selection:text-corten antialiased min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

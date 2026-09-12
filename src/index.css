@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #1C1B1A;
+    background-color: #FAF6EF;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F1EAE0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D5C7B5;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B84F2E;
+  }
+}
+
+/* Subtle architectural textures & light */
+.bg-mineral-grid {
+  background-image: radial-gradient(rgba(28, 27, 26, 0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(184, 79, 46, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(184, 79, 46, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.text-editorial-quote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+/* Solar ray light leak effect */
+.light-beam-overlay {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(255, 245, 230, 0.85) 0%,
+    rgba(241, 234, 224, 0.4) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}

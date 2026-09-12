@@ -1,0 +1,28 @@
+﻿# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Temporary / Scratch scripts and artifacts
+screenshot_*.png
+test_*.png
+test_*.py
+tests_suite.py
+check_*.png
+scratch_*.json
+deploy_*.json
+*.pdf
+seccion_trilogia_ref.jpg
