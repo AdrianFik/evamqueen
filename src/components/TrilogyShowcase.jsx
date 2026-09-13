@@ -54,7 +54,7 @@ export default function TrilogyShowcase({ onOpenChapter }) {
       </div>
 
       {/* Main Interactive Showcase Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-blancoLuz/70 rounded-3xl p-6 md:p-10 border border-piedra/50 shadow-architectural backdrop-blur-sm">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-blancoLuz/70 rounded-3xl p-6 md:p-10 border border-piedra/50 shadow-architectural">
         {/* Left Column: 3D Book Viewer */}
         <div className="lg:col-span-6 flex flex-col items-center">
           <Book3DViewer
