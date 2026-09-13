@@ -62,12 +62,6 @@ export default function TrilogyIntro() {
                 {mat.description}
               </p>
             </div>
-
-            {/* Bottom: Materia y Memoria line */}
-            <div className="relative z-10 mt-8 pt-4 border-t border-piedra/40 flex items-center justify-between text-xs font-sans text-grafito/60">
-              <span className="font-serif italic text-sm text-carbon/70">Materia y memoria</span>
-              <div className="w-12 h-0.5 rounded-full" style={{ backgroundColor: mat.color }} />
-            </div>
           </div>
         ))}
       </div>
@@ -124,8 +118,7 @@ export default function TrilogyIntro() {
                   </p>
                 </div>
 
-                <div className="pt-2 border-t border-piedra/30 flex items-center justify-between text-[11px] font-sans text-grafito/50">
-                  <span className="uppercase tracking-wider">Trilogía Tierra · Metal · Sangre</span>
+                <div className="pt-2 border-t border-piedra/30 flex items-center justify-end text-[11px] font-sans text-grafito/50">
                   <span className="font-serif italic text-corten">{char.name === 'Anna' ? 'Europa dividida' : 'Construir para salvarse'}</span>
                 </div>
               </div>

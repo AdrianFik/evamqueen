@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, BookOpen, ZoomIn, ZoomOut, Bookmark } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, BookOpen, ZoomIn, ZoomOut } from 'lucide-react';
 import { chaptersData } from '../data/chaptersData';
 
 export default function ChapterReaderModal({ bookId, onClose }) {
   const [fontSize, setFontSize] = useState(() => (typeof window !== 'undefined' && window.innerWidth < 640 ? 16 : 19));
   const chapter = chaptersData[bookId];
 
-  // Default to Chapter 1 start page if available
-  const initialPage = bookId === 'book1' ? 6 : 8; // 0-indexed: Book 1 pg 7, Book 2 pg 9
-  const [currentPage, setCurrentPage] = useState(initialPage);
+  // Chapter 1 starts at page 0 (sample is only Chapter 1)
+  const [currentPage, setCurrentPage] = useState(0);
 
   // Close on Escape key and handle arrow navigation
   useEffect(() => {
@@ -27,36 +26,10 @@ export default function ChapterReaderModal({ bookId, onClose }) {
 
   if (!chapter) return null;
 
-  // Bookmarks / Quick sections
-  const quickSections = bookId === 'book1' 
-    ? [
-        { label: 'Portada', page: 0 },
-        { label: 'Dedicatoria', page: 3 },
-        { label: 'Prefacio', page: 4 },
-        { label: 'Capítulo 1', page: 6 }
-      ]
-    : [
-        { label: 'Portada', page: 1 },
-        { label: 'Dedicatoria', page: 4 },
-        { label: 'Prefacio', page: 5 },
-        { label: 'Capítulo 1', page: 8 }
-      ];
-
-  // Clean raw page text by removing repetitive running headers
-  const formatPageContent = (text) => {
-    if (!text) return '';
-    const lines = text.split('\n');
-    const filtered = lines.filter(l => {
-      const trim = l.trim();
-      return (
-        trim !== 'EVAM QUEEN' &&
-        trim !== 'CASAS DE UNA VIDA' &&
-        trim !== 'RUTAS DE FUEGO Y VIENTO' &&
-        !/^\d+$/.test(trim) // remove standalone page number lines
-      );
-    });
-    return filtered.join('\n').trim();
-  };
+  const paragraphs = (chapter.pages[currentPage] || '')
+    .split('\n\n')
+    .map(p => p.trim())
+    .filter(Boolean);
 
   return (
     <div 
@@ -114,28 +87,6 @@ export default function ChapterReaderModal({ bookId, onClose }) {
           </div>
         </div>
 
-        {/* Quick Section Jump Pills */}
-        <div className="px-6 py-2 border-b border-piedra/30 bg-cal/30 flex items-center gap-2 overflow-x-auto text-xs font-sans">
-          <span className="text-grafito/50 flex items-center gap-1 text-[11px] uppercase tracking-wider mr-1">
-            <Bookmark className="w-3 h-3 text-corten" />
-            Sección:
-          </span>
-          {quickSections.map((sec) => (
-            <button
-              key={sec.label}
-              onClick={() => setCurrentPage(sec.page)}
-              className={`px-3 py-1 rounded-lg border transition-colors ${
-                currentPage >= sec.page && 
-                (quickSections.find((_, i) => i > quickSections.indexOf(sec))?.page > currentPage || sec === quickSections[quickSections.length - 1])
-                  ? 'bg-carbon text-blancoLuz border-carbon shadow-sm'
-                  : 'bg-blancoLuz/80 text-grafito/80 border-piedra/50 hover:border-corten'
-              }`}
-            >
-              {sec.label}
-            </button>
-          ))}
-        </div>
-
         {/* Reading Body */}
         <div className="flex-1 overflow-y-auto px-4 sm:px-12 md:px-20 py-5 sm:py-8 space-y-4 sm:space-y-6">
           <div className="max-w-2xl mx-auto">
@@ -149,12 +100,29 @@ export default function ChapterReaderModal({ bookId, onClose }) {
 
             {/* Current Page Content */}
             <div 
-              className="font-serif text-carbon/90 whitespace-pre-line select-text"
-              style={{ fontSize: `${fontSize}px`, lineHeight: 1.75 }}
+              className="font-serif text-carbon/90 select-text space-y-4 text-left sm:text-justify leading-relaxed"
+              style={{ fontSize: `${fontSize}px`, lineHeight: 1.8 }}
             >
-              {formatPageContent(chapter.pages[currentPage]) || (
+              {currentPage === 0 && (
+                <div className="text-center mb-8 pb-5 border-b border-piedra/40">
+                  <span className="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-corten font-sans font-semibold block mb-2">
+                    Capítulo 1
+                  </span>
+                  <h4 className="font-serif text-2xl sm:text-4xl font-bold text-carbon tracking-tight">
+                    {chapter.chapterTitle || (bookId === 'book1' ? 'El porche de los sucesos' : 'El Viento de Roma')}
+                  </h4>
+                </div>
+              )}
+
+              {paragraphs.length > 0 ? (
+                paragraphs.map((para, idx) => (
+                  <p key={idx} className="leading-relaxed">
+                    {para}
+                  </p>
+                ))
+              ) : (
                 <div className="text-center italic text-grafito/50 py-12">
-                  (Página en blanco o portadilla)
+                  (Página en blanco)
                 </div>
               )}
             </div>
