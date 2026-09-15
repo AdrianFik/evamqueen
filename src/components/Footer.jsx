@@ -1,21 +1,8 @@
-import React, { useState } from 'react';
-import { Feather, ArrowUpRight, Send, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { Feather, ArrowUpRight } from 'lucide-react';
 import { InstagramIcon } from './Icons';
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setTimeout(() => {
-        window.open(`https://evamqueen.substack.com/`, '_blank');
-      }, 800);
-    }
-  };
-
   return (
     <footer className="relative bg-[#1C1B1A] text-blancoLuz pt-20 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden border-t border-[#34312E]">
       {/* Subtle architectural grid pattern */}
@@ -37,30 +24,19 @@ export default function Footer() {
             Acompaña a Eva en el proceso de escritura de <em>Arquitectos del destino</em> y recibe cartas íntimas sobre arquitectura, libros y procesos de vida en su Substack <strong>@evamqueen</strong>.
           </p>
 
-          {subscribed ? (
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-corten/30 border border-corten text-stone-100 text-sm font-sans animate-fade-in">
-              <CheckCircle2 className="w-5 h-5 text-corten" />
-              <span>Redirigiendo al Substack oficial de Eva...</span>
-            </div>
-          ) : (
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Introduce tu correo electrónico"
-                required
-                className="w-full px-4 py-3 rounded-xl bg-[#1C1B1A] border border-stone-700 text-sm font-sans text-blancoLuz placeholder-stone-500 focus:outline-none focus:border-corten transition-colors"
+          {/* Substack Official Embed Widget */}
+          <div className="w-full max-w-[480px] mx-auto pt-2">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-stone-700/60 bg-white">
+              <iframe
+                src="https://evamqueen.substack.com/embed"
+                className="w-full h-[440px] sm:h-[340px]"
+                style={{ border: 'none', background: 'white', display: 'block' }}
+                frameBorder="0"
+                scrolling="no"
+                title="Suscripción Substack Evam Queen"
               />
-              <button
-                type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-corten text-blancoLuz text-sm font-sans font-medium hover:bg-terracota transition-colors whitespace-nowrap shadow-corten"
-              >
-                <span>Suscribirme</span>
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
-          )}
+            </div>
+          </div>
         </div>
 
         {/* Main Footer Links & Architecture Statement */}

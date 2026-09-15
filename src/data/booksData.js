@@ -67,7 +67,7 @@ export const booksData = [
     hasChapter: true,
     chapterId: "book1",
     primaryCtaText: "Comprar ejemplar",
-    primaryCtaLink: "https://amzn.eu/d/01jcieyq",
+    primaryCtaLink: "https://amzn.to/4hsIjqG",
     secondaryCtaText: "Leer primer capítulo",
     accentColor: "#9B7558",
     yearLabel: "Volumen I · Publicado"
@@ -93,7 +93,7 @@ export const booksData = [
     hasChapter: true,
     chapterId: "book2",
     primaryCtaText: "Comprar ejemplar",
-    primaryCtaLink: "https://amzn.eu/d/0dp9z97D",
+    primaryCtaLink: "https://amzn.to/4rcOQJB",
     secondaryCtaText: "Leer primer capítulo",
     accentColor: "#B84F2E",
     yearLabel: "Volumen II · Publicado"
